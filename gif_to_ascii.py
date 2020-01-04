@@ -16,27 +16,33 @@ def img2ascii(img):
     im = np.array(res_img)
     w, h = im.shape
     avg = np.average(im)
+    asc = ''
 
-    os.system('cls' if os.name=='nt' else 'clear')
     for i in range(w):
         for j in range(h):
             if im[i][j] < 100:
-                print('x', end='')
+                asc += 'x'
             elif im[i][j] < 200:
-                print('.', end='')
+                asc += '.'
             else:
-                print(' ', end='')
-        print('')
+                asc += ' '
+        asc += '\n'
+
+    return asc
 
 if __name__=='__main__':
-
     parser = argparse.ArgumentParser(description='Gif turned to ascii art animation (you might need to resize your terminal window!)')
     parser.add_argument('gif', type=str, help='gif chosen for conversion (returns error if none existant path)')
     args = parser.parse_args()
 
     frames = extractFrames(args.gif)
+    ascs = []
+
+    for frame in frames:
+        ascs.append(img2ascii(frame))
+
     while True:
-        for frame in frames:
-            im = frame
-            img2ascii(im)
-            time.sleep(0.033)
+        for asc in ascs:
+            os.system('cls' if os.name=='nt' else 'clear')
+            print(asc)
+            time.sleep(0.05)
