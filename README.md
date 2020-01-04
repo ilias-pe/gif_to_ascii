@@ -4,7 +4,7 @@ Basic python script that turns a gif to a (sorta) ASCII art animation on termina
 
 ### syntax
 
-(Create a venv and install requirement first)
+(Create a venv and install requirements first)
 ```console
 $ python gif_to_ascii.py path/to/gif
 ```
