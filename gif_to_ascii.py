@@ -6,7 +6,7 @@ import time
 
 def extractFrames(inGif):
     im = Image.open(inGif)
-    frames = [frame.copy() for frame in ImageSequence.Iterator(im)]
+    frames = (frame.copy() for frame in ImageSequence.Iterator(im))
     return frames
 
 def img2ascii(img):
@@ -36,10 +36,7 @@ if __name__=='__main__':
     args = parser.parse_args()
 
     frames = extractFrames(args.gif)
-    ascs = []
-
-    for frame in frames:
-        ascs.append(img2ascii(frame))
+    ascs = [img2ascii(frame) for frame in frames]
 
     while True:
         for asc in ascs:
