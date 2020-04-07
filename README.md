@@ -1,4 +1,4 @@
-# Gif to ASCII art animation python (beta version)
+# Gif to ASCII art animation python
 
 Basic python script that turns a gif to a (sorta) ASCII art animation on terminal
 
